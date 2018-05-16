@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Book = require('../db/schemas/book.model');
 
-// simple mongoose connection
+// Move the connection code to a better place
 const HOSTNAME = 'localhost';
 const PORT = 27017; // default MongoDB port
 const DATABASE_NAME = 'muhdb';
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
   Book.find({})
     .exec((err, books) => {
       if (err) res.send('Error has occurred');
-      else res.json(books);
+      else res.status(200).json(books);
     });
 });
 
@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
   }).
   exec((err, book) => {
     if (err) res.send('Error has occurred');
-    else res.json(book);
+    else res.status(200).json(book);
   });
 });
 
