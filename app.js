@@ -1,5 +1,6 @@
 const app = require('express')();
 const books = require('./routes/books');
+const database = require('./database');
 
 app.use('/books', books);
 

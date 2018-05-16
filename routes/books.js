@@ -1,17 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Book = require('../db/schemas/book.model');
-
-// Move the connection code to a better place
-const HOSTNAME = 'localhost';
-const PORT = 27017; // default MongoDB port
-const DATABASE_NAME = 'muhdb';
-
-const mongoose = require('mongoose');
-mongoose.connect(`mongodb://${HOSTNAME}:${PORT}/${DATABASE_NAME}`).then(
-  () => { console.log('Connected to MongoDB successfylly'); },
-  err => { console.log('error: ' + err);}
-);
+const Book = require('../models/book');
 
 // GET /books
 router.get('/', (req, res) => {
